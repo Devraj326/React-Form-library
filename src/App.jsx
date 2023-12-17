@@ -8,15 +8,19 @@ function App() {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
   console.log(errors);
 
   function onSubmit(data) {
     console.log(data);
+    setRegistrationSuccess(true);
   }
 
   return (
     <>
+      {registrationSuccess && <p>Registration successful!</p>}
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <label>First Name</label>
         <input type="text" placeholder="First Name" {...register('firstName', { required: true })} />
